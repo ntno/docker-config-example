@@ -1,20 +1,22 @@
 # docker-config-example
 
-### build image
-docker build hello-verity -t hello-verity
+### build development image 
+`docker build hello-verity -t hello-verity --build-arg ENVIRON=dev`
+or
+`export ENVIRON=dev && docker build hello-verity -t hello-verity --build-arg ENVIRON=$ENVIRON`
 
 
-prod
-50 worker processes
-worker_rlimit_nofile of 8192
-worker_connections at 4096
+### build prod image
+`docker build hello-verity -t hello-verity --build-arg ENVIRON=prod`
+or
+`export ENVIRON=prod && docker build hello-verity -t hello-verity --build-arg ENVIRON=$ENVIRON`
 
 
-dev 
-10 worker processes
-worker_rlimit_nofile of 4096
-worker_connections at 1024 
+*Note: image will default to the dev configuration if no build argument is specified*
 
 
 
-serve the contents of /var/www/.
+
+
+## Future Enhancements
+

@@ -11,6 +11,13 @@ RUN /bin/bash -c "ln -sf /dev/stderr /var/log/nginx/error.log"
 #create user for hello-verity site
 RUN adduser --system --no-create-home --shell /bin/false --group --disabled-login www-hello-verity
 
+#configure per region - default to dev
+COPY dev.conf dev.conf
+COPY prod.conf prod.conf
+ARG ENVIRON=dev
+RUN if [ "$ENVIRON" = "dev" ] ; then cp dev.conf /etc/nginx/region.conf && cat /etc/nginx/region.conf; \
+                                else cp prod.conf /etc/nginx/region.conf && cat /etc/nginx/region.conf; fi
+
 #copy the configuration
 COPY nginx.conf /etc/nginx
 
