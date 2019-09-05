@@ -15,7 +15,7 @@ RUN adduser --system --no-create-home --shell /bin/false --group --disabled-logi
 COPY nginx.conf /etc/nginx
 
 #copy the site content
-COPY site /etc/nginx/www/hello-verity
+COPY site /var/www
 
 #test the configuration
 RUN /bin/bash -c "nginx -t"
