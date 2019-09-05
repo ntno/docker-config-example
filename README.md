@@ -2,16 +2,15 @@
 
 ## Step 1) Build
 ### development image 
-`docker build hello-verity -t hello-verity --build-arg ENVIRON=dev`
-or
-`export ENVIRON=dev && docker build hello-verity -t hello-verity --build-arg ENVIRON=$ENVIRON`
+`docker build hello-verity -t hello-verity --build-arg ENVIRON=dev`  
+or  
+`export ENVIRON=dev && docker build hello-verity -t hello-verity --build-arg ENVIRON=$ENVIRON`  
 
 
 ### prod image
-`docker build hello-verity -t hello-verity --build-arg ENVIRON=prod`
-or
-`export ENVIRON=prod && docker build hello-verity -t hello-verity --build-arg ENVIRON=$ENVIRON`
-
+`docker build hello-verity -t hello-verity --build-arg ENVIRON=prod`  
+or  
+`export ENVIRON=prod && docker build hello-verity -t hello-verity --build-arg ENVIRON=$ENVIRON`  
 
 *Note: image will default to the dev configuration if no build argument is specified*
 
@@ -57,7 +56,7 @@ use the following command to push the image to your elastic container registry r
 
 `docker push [AWS_ACCOUNT_ID].dkr.ecr.[AWS_REGION].amazonaws.com/[ECR_REPO]:[LABEL]`
 
-example:
+example:  
 `docker push 987654321.dkr.ecr.us-east-2.amazonaws.com/hello-world:verity`
 
 
@@ -75,7 +74,7 @@ example:
 
 
 ## Future Enhancements
-* continueto research how to swap out environment variables in an easy / robust way
+* continue to research how to swap out environment variables in an easy / robust way
   * started looking into the utility "gettext-base" which looked promising but there is probably a better way to do it using docker or docker-compose.  I will need to read the docs further
 * automated infrastructure deployment of ec2 instance or ecs cluster
   * see work in progress [here](https://github.com/ntno/ntno-challenge/blob/master/infrastructure/cloudformation/cft/deploy-hello-world-app.yml)
